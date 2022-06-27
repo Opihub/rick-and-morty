@@ -8,6 +8,9 @@ Link alle api: https://rickandmortyapi.com/documentation/
 
 ## Requisiti
 
+#### Homepage:
+- Crazione di una semplice homepage per accogliere il visitatore all'atterraggio sul sito.
+
 #### Personaggi:
 - Possibilità di vedere un elenco di personaggi e, per ogni personaggio, mostrare:
   - Nome
