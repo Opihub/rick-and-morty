@@ -37,4 +37,4 @@ Per ogni personaggio resistende dovrà essere mostrato il nome e il genere
 - Pagina di dettaglio epidosi. Per ogni episodio bisogna mostrare:
   - Elenco dei personaggi presenti e giorno in cui è andato in onda per la prima volta
 
-**NB: Ogni qual volta in una pagina di dettaglio vi sono personaggi, origine, location o episodi dovranno essere dei link cliccabili di rimando alle relative pagine di dettaglio**
+**NB: Ogni qual volta in una pagina di dettaglio vi sono personaggi, origine, location o episodi dovranno essere dei link cliccabili di rimando alle relative pagine di dettaglio.**
