@@ -1,15 +1,33 @@
-import useFetch from "react-fetch-hook";
+import axios from "axios";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 const Character = () => {
   const router = useRouter();
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
 
-  const { isLoading, data } = useFetch(
-    `https://rickandmortyapi.com/api/character/${router.query.id}`,
-    { depends: [router.isReady] }
-  );
+  const fetchData = async () => {
+    try {
+      const res = await axios.get("https://rickandmortyapi.com/api/character/" + router.query.id);
+      setData(res.data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  console.log(isLoading, data);
+   useEffect(() => {
+      fetchData();
+    }, []);
+  
+
+    if (loading) {
+      return <div>Attendere...</div>;
+    }
+
+    console.log(data);
 };
 
 export default Character;

@@ -1,23 +1,35 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../../styles/Home.module.css";
-import useFetch from "react-fetch-hook";
+import axios from 'axios';
 
 const Characters = () => {
-  const { isLoading, data } = useFetch(
-    "https://rickandmortyapi.com/api/character"
-  );
+  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
 
-  if (isLoading) {
-    return <>Loading...</>;
+  const fetchData = async () => {
+    try {
+      const res = await axios.get("https://rickandmortyapi.com/api/character");
+      setData(res.data.results);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <div>Attendere...</div>;
   }
-
-  console.log(data.results);
 
   return (
     <div className={styles.main}>
-      {data.results.map((item) => {
-        return <div key={item.id}>{item.name}</div>;
-      })}
+      {data.map((item) => (
+        <div key={item.id}>{item.name}</div>
+      ))}
     </div>
   );
 };
